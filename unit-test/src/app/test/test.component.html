@@ -1,0 +1,11 @@
+<div class="content">
+     <div class="p">A * B + C</div>
+	     <form id="addForm" (submit)="addnumber($event)">
+             <input type="text" class="input" name="a" id="a" [(ngModel)]="a"/>
+	         <input type="text"class="input" name="b" id="b" [(ngModel)]="b"/>
+		     <input type="text" class="input" name="c" id="c" [(ngModel)]="c"/>
+		     <button type="submit" name="submit" class="addbutton">Add</button>
+		 </form>
+	 <div id="error" *ngFor="let list of err;">{{list}}</div>
+	 <div id="result">{{result}}</div>
+</div>

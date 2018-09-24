@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html id="mainPage" lang="en">
+<head>
+     <title>Home</title>
+	 <meta name="viewport" content="">
+	 <meta charset="utf-8">
+	 <link rel="stylesheet" href="css/css.css">
+	 <link rel="icon" type="image/x-ixon" href="favicon.ico">	 
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <script>
+	     $(document).ready(function(){
+		     $('form').submit(function(e){			     
+			     var errstr = '';
+				 var formdata = {
+				     a:$('#a').val(),
+					 b:$('#b').val(),
+					 c:$('#c').val()
+				 };
+				 $.ajax({
+				     type:'GET',
+					 url: './api/addnum',
+					 data: formdata,
+					 dataType: 'json',
+					 encode:true
+				 })
+				 .done(function(data){
+				     console.log(data);
+					 if(data.success == true){
+					     $('#result').html(data.result);
+						 $('#error').html('');
+					 }else{
+					     $('#result').html('');
+						 for(var i = 0; i < data.errors.length; i++){
+						     errstr = errstr + '<li>' + data.errors[i] + '</li>';
+						 }
+						 $('#error').html('<ul>' + errstr + '</ul>');
+					 }
+				 });
+				 e.preventDefault();
+			 });
+		 });
+	 </script>
+</head>
+<body>
+     <div id="p"></div>
+	 <form>
+	     <input type="text" class="input" name="a" id="a"/>
+	     <input type="text"class="input" name="b" id="b"/>
+		 <input type="text" class="input" name="c" id="c"/>
+		 <button type="submit" name="submit" value="submit" class="addbutton">Add</button>
+	 </form>
+	 <div id="error"></div>
+	 <div id="result"></div>
+</body>
+</html>

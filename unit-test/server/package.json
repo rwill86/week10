@@ -1,0 +1,22 @@
+{
+  "name": "addnums",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "mongodb": "^3.1.4",
+    "nodemon": "^1.18.3",
+    "npm": "^6.4.1",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
